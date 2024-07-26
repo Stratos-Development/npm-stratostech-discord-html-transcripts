@@ -19,7 +19,7 @@ type RenderEmbedContext = RenderMessageContext & {
 export async function renderEmbed(embed: Embed, context: RenderEmbedContext) {
   return (
     <DiscordEmbed
-      embedTitle={await renderContent(embed.title, { ...context, type: RenderType.EMBED }) ?? undefined}
+      embedTitle={embed.title ?? undefined}
       slot="embeds"
       key={`${context.message.id}-e-${context.index}`}
       authorImage={embed.author?.proxyIconURL ?? embed.author?.iconURL}

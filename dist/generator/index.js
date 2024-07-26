@@ -38,11 +38,9 @@ async function renderMessages(_a) {
     var _b, _c, _d, _e, _f, _g, _h, _j, _k;
     var { messages, channel, callbacks } = _a, options = __rest(_a, ["messages", "channel", "callbacks"]);
     const profiles = (0, buildProfiles_1.buildProfiles)(messages);
-    const chatBody = (await Promise.all(messages.map((message) => (0, message_1.default)(message, Object.assign({
-        messages,
+    const chatBody = (await Promise.all(messages.map((message) => (0, message_1.default)(message, Object.assign({ messages,
         channel,
-        callbacks
-    }, options))))).filter(utils_1.isDefined);
+        callbacks }, options))))).filter(utils_1.isDefined);
     const elements = (react_1.default.createElement(discord_components_react_1.DiscordMessages, { style: { padding: '0 0 89px', backgroundColor: "#313338", border: "none", borderTop: "1px solid rgba(255, 255, 255, 0.05)" } }, chatBody));
     const headerElement = (react_1.default.createElement("div", null,
         react_1.default.createElement("section", null,
@@ -68,19 +66,15 @@ async function renderMessages(_a) {
             react_1.default.createElement("meta", { name: "viewport", content: "width=device-width, initial-scale=1" }),
             react_1.default.createElement("link", { rel: "icon", type: "image/png", href: "https://stratostech.xyz/favicon.ico" }),
             react_1.default.createElement("title", null, channel.isDMBased() ? 'Direct Messages' : `${channel.guild.name} - Stratos-Dev`),
-            react_1.default.createElement("script", {
-                dangerouslySetInnerHTML: {
+            react_1.default.createElement("script", { dangerouslySetInnerHTML: {
                     __html: client_1.scrollToMessage,
-                }
-            }),
+                } }),
             !options.hydrate && (react_1.default.createElement(react_1.default.Fragment, null,
                 react_1.default.createElement("link", { rel: "stylesheet", href: `https://cdn.stratostech.xyz/css/transcripts.css` }),
                 react_1.default.createElement("script", { src: 'https://cdn.stratostech.xyz/js/transcripts.js' }),
-                react_1.default.createElement("script", {
-                    dangerouslySetInnerHTML: {
+                react_1.default.createElement("script", { dangerouslySetInnerHTML: {
                         __html: `window.$discordMessage={profiles:${JSON.stringify(await profiles)}}`,
-                    }
-                }),
+                    } }),
                 react_1.default.createElement("script", { type: "module", src: `https://cdn.jsdelivr.net/npm/@derockdev/discord-components-core@${discordComponentsVersion}/dist/derockdev-discord-components-core/derockdev-discord-components-core.esm.js` })))),
         react_1.default.createElement("body", null,
             headerElement,
